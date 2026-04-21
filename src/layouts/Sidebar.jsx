@@ -1,15 +1,22 @@
-import { MdDashboard } from "react-icons/md";
-import { FaPlus } from "react-icons/fa";
+import { MdSpaceDashboard } from "react-icons/md";
+import { FaUsers, FaPlus, FaClipboardList } from "react-icons/fa";
 import { useState } from "react";
-import { Link } from "react-router-dom"; // pastikan sudah diinstall react-router-dom
+import { NavLink } from "react-router-dom";
 
 export default function Sidebar() {
     const [activeMenu, setActiveMenu] = useState("Dashboard");
 
+    const menuClass = ({ isActive }) =>
+        `flex cursor-pointer items-center rounded-xl p-4 space-x-2
+        ${isActive ?
+            "text-hijau bg-green-200 font-extrabold" :
+            "text-gray-600 hover:text-hijau hover:bg-green-200 hover:font-extrabold"
+        }`
+
     const menuItems = [
-        { name: "Dashboard", icon: MdDashboard, color: "text-green-600", path: "/" },
-        { name: "Orders", icon: MdDashboard, color: "text-blue-600", path: "/orders" },
-        { name: "Customers", icon: MdDashboard, color: "text-purple-600", path: "/customers" }
+        { name: "Dashboard", icon: MdSpaceDashboard, color: "text-green-600", path: "/" },
+        { name: "Orders", icon: FaClipboardList, color: "text-blue-600", path: "/orders" },
+        { name: "Customers", icon: FaUsers, color: "text-purple-600", path: "/customers" }
     ];
 
     return (
@@ -27,24 +34,17 @@ export default function Sidebar() {
                 <ul className="space-y-3">
                     {menuItems.map((item, index) => (
                         <li key={item.name}>
-                            <Link
+                            <NavLink
                                 id={`menu-${index + 1}`}
                                 to={item.path}
                                 onClick={() => setActiveMenu(item.name)}
-                                className={`
-                                    group relative overflow-hidden cursor-pointer items-center rounded-xl p-4 font-medium 
-                                    transition-all duration-300 hover:translate-x-2 flex
-                                    ${activeMenu === item.name 
-                                        ? 'bg-gradient-to-r from-green-50 to-transparent text-green-600 shadow-md' 
-                                        : 'text-gray-600 hover:bg-gradient-to-r hover:from-gray-50 hover:to-transparent'
-                                    }
-                                `}
+                                className={menuClass}
                                 style={{
                                     animationDelay: `${index * 100}ms`,
                                     animationFillMode: 'backwards'
                                 }}
                             >
-                                <item.icon className={`mr-4 text-xl transition-all duration-300 group-hover:scale-110 ${activeMenu === item.name ? item.color : 'text-gray-400 group-hover:text-green-500'}`} />
+                                <item.icon className={`text-xl transition-all duration-300 ${activeMenu === item.name ? item.color : 'text-gray-400 group-hover:text-green-500'}`} />
                                 <span>{item.name}</span>
                                 {activeMenu === item.name && (
                                     <div className="absolute left-0 top-0 h-full w-1 bg-green-500 animate-slideInRight"></div>
@@ -54,7 +54,7 @@ export default function Sidebar() {
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                     </svg>
                                 </div>
-                            </Link>
+                            </NavLink>
                         </li>
                     ))}
                 </ul>

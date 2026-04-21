@@ -6,7 +6,7 @@ export default function Orders() {
 
     return (
         <>
-        <PageHeader/>
+        <PageHeader title="Orders"/>
         <p>Ini Halaman Orders</p>
         </>
     );

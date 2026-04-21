@@ -6,7 +6,7 @@ export default function Customers() {
 
     return (
         <>
-        <PageHeader/>
+        <PageHeader title="Customers"/>
         <p>Ini Halaman Customers</p>
         </>
     );

@@ -7,6 +7,7 @@ import Dashboard from "./pages/Dashboard";
 import "./assets/tailwind.css"
 import Orders from './pages/Orders';
 import Customers from './pages/Customers';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
   const [count, setCount] = useState(0)
