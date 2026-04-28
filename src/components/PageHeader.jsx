@@ -1,21 +1,22 @@
-export default function PageHeader({title}) {
-    return (
-        <div id="pageheader-container" className="flex items-center justify-between p-4">
-            <div id="pageheader-left" className="flex flex-col">
-                <span id="pageheader-title" className="text-3xl font-semibold">
-                    {title}
-                </span>
-                <div id="breadcrumb-links" className="flex items-center font-medium space-x-2 mt-2">
-                    <span id="breadcrumb-home" className="text-gray-500">Dashboard</span>
-                    <span id="breadcrumb-separator" className="text-gray-500">/</span>
-                    <span id="breadcrumb-current" className="text-gray-500">Order List</span>
-                </div>
-            </div>
-            <div id="action-button">
-                <button id="add-button" className="bg-hijau text-white px-4 py-2 rounded-lg">
-                    Add Button
-                </button>
-            </div>
+import React from 'react';
+
+const PageHeader = ({ title, breadcrumb, children }) => {
+  return (
+    <div className="mb-6">
+      <div className="flex justify-between items-center mb-4">
+        <div>
+          <h1 className="text-2xl font-bold text-gray-800">{title}</h1>
+          {breadcrumb && (
+            <p className="text-sm text-gray-500 mt-1">
+              {Array.isArray(breadcrumb) ? breadcrumb.join(' / ') : breadcrumb}
+            </p>
+          )}
         </div>
-    );
-}
+        <div>{children}</div>
+      </div>
+      <hr className="border-gray-200" />
+    </div>
+  );
+};
+
+export default PageHeader;

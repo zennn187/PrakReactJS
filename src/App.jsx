@@ -7,11 +7,6 @@ import Orders from './pages/Orders';
 import Customers from './pages/Customers';
 import { Route, Routes } from 'react-router-dom';
 import NotFound from './pages/NotFound';
-import MainLayout from './layouts/MainLayout';
-import AuthLayout from './layouts/AuthLayout';
-import Login from './pages/auth/Login';
-import Register from './pages/auth/Register';
-import Forgot from './pages/auth/Forgot';
 
 function App() {
   const [count, setCount] = useState(0)
