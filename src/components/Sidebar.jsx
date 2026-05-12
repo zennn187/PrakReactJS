@@ -1,25 +1,26 @@
+<<<<<<< HEAD
 import { MdSpaceDashboard, MdShoppingBag } from "react-icons/md"; // Tambah MdShoppingBag
 import { FaUsers, FaPlus, FaClipboardList, FaExclamationTriangle } from "react-icons/fa";
 import { useState, useEffect } from "react";
+=======
+import { MdSpaceDashboard } from "react-icons/md";
+import { FaUsers, FaClipboardList, FaExclamationTriangle, FaUtensils, FaChartPie, FaRegCalendarAlt, FaCommentDots, FaWallet } from "react-icons/fa";
+import { useState } from "react";
+>>>>>>> 3dd21db2b0d349e71e25d28ad5d48dd90c48b8b0
 import { NavLink } from "react-router-dom";
 
 export default function Sidebar() {
     const [activeMenu, setActiveMenu] = useState("Dashboard");
-    const [currentTime, setCurrentTime] = useState(new Date());
-
-    useEffect(() => {
-        const timer = setInterval(() => setCurrentTime(new Date()), 1000);
-        return () => clearInterval(timer);
-    }, []);
 
     const menuClass = ({ isActive }) =>
-        `flex cursor-pointer items-center rounded-xl p-4 space-x-2 relative group overflow-hidden transition-all duration-300
+        `flex cursor-pointer items-center rounded-xl p-3.5 space-x-4 font-medium transition-all duration-200
         ${isActive ?
-            "text-hijau bg-gradient-to-r from-green-50 to-green-100 shadow-md" :
-            "text-gray-600 hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-100 hover:shadow-sm"
+            "text-orange-500 bg-orange-50 shadow-sm" :
+            "text-gray-500 hover:bg-gray-50 hover:text-orange-500"
         }`
 
     const menuItems = [
+<<<<<<< HEAD
         { name: "Dashboard", icon: MdSpaceDashboard, color: "text-green-600", gradient: "from-green-400 to-green-600", path: "/" },
         // --- MENU  BARU ---
         { name: "Products", icon: MdShoppingBag, color: "text-emerald-600", gradient: "from-emerald-400 to-emerald-600", path: "/products" },
@@ -92,11 +93,37 @@ export default function Sidebar() {
                 <ul className="space-y-2">
                     {menuItems.map((item, index) => (
                         <li key={item.name} className="relative">
+=======
+        { name: "Dashboard", icon: MdSpaceDashboard, path: "/" },
+        { name: "Order List", icon: FaClipboardList, path: "/orders" },
+        { name: "Customer", icon: FaUsers, path: "/customers" },
+        { name: "Analytics", icon: FaChartPie, path: "/analytics" },
+        { name: "Foods", icon: FaUtensils, path: "/foods" },
+        { name: "Calendar", icon: FaRegCalendarAlt, path: "/calendar" },
+        { name: "Chat", icon: FaCommentDots, path: "/chat" },
+        { name: "Wallet", icon: FaWallet, path: "/wallet" },
+        { name: "Error 404", icon: FaExclamationTriangle, path: "/error-404" }
+    ];
+
+    return (
+        <div className="flex min-h-screen w-[280px] flex-col bg-white p-6 border-r border-gray-100 z-20">
+            <div className="flex items-center mb-10 pl-2">
+                <span className="font-poppins text-4xl font-extrabold text-gray-800 tracking-tight">
+                    On-Catering<b className="text-orange-500">.</b>
+                </span>
+            </div>
+
+            <div className="flex-1 overflow-y-auto overflow-x-hidden no-scrollbar">
+                <ul className="space-y-1.5">
+                    {menuItems.map((item) => (
+                        <li key={item.name}>
+>>>>>>> 3dd21db2b0d349e71e25d28ad5d48dd90c48b8b0
                             <NavLink
                                 to={item.path}
                                 onClick={() => setActiveMenu(item.name)}
                                 className={menuClass}
                             >
+<<<<<<< HEAD
                                 <div className={`absolute inset-0 bg-gradient-to-r ${item.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-xl`}></div>
                                 <item.icon className={`text-xl transition-all duration-300 ${activeMenu === item.name ? item.color : 'text-gray-400 group-hover:text-green-500'} group-hover:scale-110`} />
                                 <span className="flex-1 font-medium text-sm">{item.name}</span>
@@ -106,6 +133,12 @@ export default function Sidebar() {
                                         <div className="absolute left-0 top-1/4 h-1/2 w-1 bg-green-500 rounded-r-full shadow-[0_0_8px_rgba(34,197,94,0.6)]"></div>
                                         <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.6)]"></div>
                                     </>
+=======
+                                <item.icon className={`text-xl ${activeMenu === item.name ? "text-orange-500" : "text-gray-400"}`} />
+                                <span className="flex-1 text-sm">{item.name}</span>
+                                {activeMenu === item.name && (
+                                    <div className="w-1.5 h-1.5 rounded-full bg-orange-500"></div>
+>>>>>>> 3dd21db2b0d349e71e25d28ad5d48dd90c48b8b0
                                 )}
                             </NavLink>
                         </li>
@@ -113,6 +146,7 @@ export default function Sidebar() {
                 </ul>
             </div>
 
+<<<<<<< HEAD
             {/* Footer */}
             <div className="mt-6">
                 <div className="group relative bg-gradient-to-br from-green-500 to-emerald-600 p-5 rounded-2xl shadow-lg mb-4 cursor-pointer transition-all duration-500 hover:shadow-green-200/50">
@@ -133,6 +167,15 @@ export default function Sidebar() {
                     </span>
                     <p className="text-[10px] text-gray-400 mt-1">&copy; 2026 v.1.0.0</p>
                 </div>
+=======
+            <div className="mt-8 bg-orange-50 rounded-2xl p-5 text-center shadow-sm relative overflow-hidden group">
+                <div className="absolute -top-4 -right-4 w-16 h-16 bg-orange-100 rounded-full opacity-50"></div>
+                <h4 className="text-sm font-bold text-gray-800 mb-2 relative z-10">Organize Menus!</h4>
+                <p className="text-xs text-gray-500 mb-4 relative z-10">Add or manage your food menus easily.</p>
+                <button className="w-full py-2 bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold rounded-xl transition shadow-md shadow-orange-500/20 relative z-10">
+                    Add Menus
+                </button>
+>>>>>>> 3dd21db2b0d349e71e25d28ad5d48dd90c48b8b0
             </div>
         </div>
     );

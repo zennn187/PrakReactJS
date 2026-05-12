@@ -32,7 +32,7 @@ function App() {
   return (
     <Suspense fallback={<Loading />}>
 
-      <Routes>
+      <Route>
         <Route element={<MainLayout />}>
           <Route path="*" element={<NotFound />} />
           <Route path="/" element={<Dashboard />} />
@@ -43,12 +43,12 @@ function App() {
 
         </Route>
 
-        <Route element={<AuthLayout />}>
+        <Routes element={<AuthLayout />}>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgot" element={<Forgot />} />
-        </Route>
-      </Routes>
+        </Routes>
+      </Route>
     </Suspense>
   );
 }

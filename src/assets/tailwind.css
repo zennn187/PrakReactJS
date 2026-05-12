@@ -14,488 +14,98 @@
     --font-barlow: "Barlow", sans-serif;
     --font-poppins: "Poppins", sans-serif;
     
-    --color-latar: #f3f4f6;
-    --color-teks: #374151; 
-    --color-teks-samping: #6b7280;
-    --color-garis: #e5e7eb; 
-    --color-hijau: #00B074; 
+    --color-latar: #f9fafb; /* gray-50 */
+    --color-teks: #1f2937; /* gray-800 */
+    --color-teks-samping: #6b7280; /* gray-500 */
+    --color-garis: #f3f4f6; /* gray-100 */
+    
+    /* Tema Aprycot Lite */
+    --color-utama: #f97316; /* orange-500 */
+    --color-utama-hover: #ea580c; /* orange-600 */
     --color-merah: #ef4444; 
     --color-biru: #3b82f6;
-    --color-kuning: #f59e0b; 
+    --color-hijau: #10b981; 
 }
 
 body {
-    @apply font-barlow;
+    @apply font-barlow text-gray-800 bg-gray-50;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* ==================== ANIMATIONS ==================== */
+/* ==================== ANIMATIONS UTILITIES ==================== */
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(15px);
     }
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
-
-@keyframes slideInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes slideInRight {
-    from {
-        opacity: 0;
-        transform: translateX(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes shake {
-    0%, 100% { 
-        transform: translateX(0); 
-    }
-    10%, 30%, 50%, 70%, 90% { 
-        transform: translateX(-3px); 
-    }
-    20%, 40%, 60%, 80% { 
-        transform: translateX(3px); 
-    }
-}
-
-@keyframes pulse {
-    0%, 100% {
-        opacity: 1;
-        transform: scale(1);
-    }
-    50% {
-        opacity: 0.8;
-        transform: scale(1.05);
-    }
-}
-
-@keyframes bounce {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-}
-
-@keyframes rotate {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes shimmer {
-    0% {
-        background-position: -1000px 0;
-    }
-    100% {
-        background-position: 1000px 0;
-    }
-}
-
-/* ==================== FALLING PARTICLES ANIMATIONS ==================== */
-
-@keyframes fall1 {
-    0% {
-        transform: translateY(0) translateX(0) rotate(0deg);
-        opacity: 0;
-    }
-    10% {
-        opacity: 0.7;
-    }
-    100% {
-        transform: translateY(100px) translateX(-15px) rotate(360deg);
-        opacity: 0;
-    }
-}
-
-@keyframes fall2 {
-    0% {
-        transform: translateY(0) translateX(0) rotate(0deg);
-        opacity: 0;
-    }
-    10% {
-        opacity: 0.6;
-    }
-    100% {
-        transform: translateY(110px) translateX(12px) rotate(-360deg);
-        opacity: 0;
-    }
-}
-
-@keyframes fall3 {
-    0% {
-        transform: translateY(0) translateX(0) rotate(0deg);
-        opacity: 0;
-    }
-    10% {
-        opacity: 0.5;
-    }
-    100% {
-        transform: translateY(90px) translateX(-10px) rotate(270deg);
-        opacity: 0;
-    }
-}
-
-@keyframes fall4 {
-    0% {
-        transform: translateY(0) translateX(0) rotate(0deg);
-        opacity: 0;
-    }
-    10% {
-        opacity: 0.65;
-    }
-    100% {
-        transform: translateY(105px) translateX(18px) rotate(-270deg);
-        opacity: 0;
-    }
-}
-
-@keyframes fall5 {
-    0% {
-        transform: translateY(0) translateX(0) rotate(0deg);
-        opacity: 0;
-    }
-    10% {
-        opacity: 0.55;
-    }
-    100% {
-        transform: translateY(95px) translateX(-20px) rotate(180deg);
-        opacity: 0;
-    }
-}
-
-@keyframes fall6 {
-    0% {
-        transform: translateY(0) translateX(0) rotate(0deg);
-        opacity: 0;
-    }
-    10% {
-        opacity: 0.45;
-    }
-    100% {
-        transform: translateY(115px) translateX(15px) rotate(-180deg);
-        opacity: 0;
-    }
-}
-
-@keyframes fall7 {
-    0% {
-        transform: translateY(0) translateX(0) rotate(0deg);
-        opacity: 0;
-    }
-    10% {
-        opacity: 0.6;
-    }
-    100% {
-        transform: translateY(100px) translateX(-25px) rotate(300deg);
-        opacity: 0;
-    }
-}
-
-@keyframes fall8 {
-    0% {
-        transform: translateY(0) translateX(0) rotate(0deg);
-        opacity: 0;
-    }
-    10% {
-        opacity: 0.5;
-    }
-    100% {
-        transform: translateY(108px) translateX(20px) rotate(-300deg);
-        opacity: 0;
-    }
-}
-
-@keyframes fall9 {
-    0% {
-        transform: translateY(0) translateX(0) rotate(0deg);
-        opacity: 0;
-    }
-    10% {
-        opacity: 0.55;
-    }
-    100% {
-        transform: translateY(92px) translateX(-12px) rotate(240deg);
-        opacity: 0;
-    }
-}
-
-@keyframes fall10 {
-    0% {
-        transform: translateY(0) translateX(0) rotate(0deg);
-        opacity: 0;
-    }
-    10% {
-        opacity: 0.4;
-    }
-    100% {
-        transform: translateY(112px) translateX(22px) rotate(-240deg);
-        opacity: 0;
-    }
-}
-
-@keyframes fall11 {
-    0% {
-        transform: translateY(0) translateX(0) rotate(0deg);
-        opacity: 0;
-    }
-    10% {
-        opacity: 0.6;
-    }
-    100% {
-        transform: translateY(98px) translateX(-18px) rotate(200deg);
-        opacity: 0;
-    }
-}
-
-@keyframes fall12 {
-    0% {
-        transform: translateY(0) translateX(0) rotate(0deg);
-        opacity: 0;
-    }
-    10% {
-        opacity: 0.45;
-    }
-    100% {
-        transform: translateY(102px) translateX(25px) rotate(-200deg);
-        opacity: 0;
-    }
-}
-
-/* ==================== ANIMATION CLASSES ==================== */
 
 .animate-fadeIn {
-    animation: fadeIn 0.3s ease-out;
+    animation: fadeIn 0.4s ease-out forwards;
 }
 
 .animate-fadeInUp {
-    animation: fadeInUp 0.5s ease-out;
+    animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.animate-slideInLeft {
-    animation: slideInLeft 0.4s ease-out;
-}
-
-.animate-slideInRight {
-    animation: slideInRight 0.4s ease-out;
-}
-
-.animate-slideUp {
-    animation: slideUp 0.4s ease-out;
-}
-
-.animate-slideDown {
-    animation: slideDown 0.4s ease-out;
-}
-
-.animate-shake {
-    animation: shake 0.3s ease-in-out;
-}
-
-.animate-pulse {
-    animation: pulse 2s ease-in-out infinite;
-}
-
-.animate-bounce {
-    animation: bounce 1s ease-in-out infinite;
-}
-
-.animate-rotate {
-    animation: rotate 1s linear infinite;
-}
-
-/* Falling Particles Classes */
-.animate-fall-1 { animation: fall1 2.5s ease-in infinite; }
-.animate-fall-2 { animation: fall2 2.8s ease-in infinite 0.2s; }
-.animate-fall-3 { animation: fall3 2.3s ease-in infinite 0.5s; }
-.animate-fall-4 { animation: fall4 2.6s ease-in infinite 0.3s; }
-.animate-fall-5 { animation: fall5 2.4s ease-in infinite 0.7s; }
-.animate-fall-6 { animation: fall6 2.7s ease-in infinite 0.4s; }
-.animate-fall-7 { animation: fall7 2.2s ease-in infinite 0.6s; }
-.animate-fall-8 { animation: fall8 2.9s ease-in infinite 0.1s; }
-.animate-fall-9 { animation: fall9 2.5s ease-in infinite 0.8s; }
-.animate-fall-10 { animation: fall10 2.6s ease-in infinite 0.3s; }
-.animate-fall-11 { animation: fall11 2.4s ease-in infinite 0.5s; }
-.animate-fall-12 { animation: fall12 2.7s ease-in infinite 0.2s; }
-
-/* Hover trigger untuk falling particles - hanya animasi saat hover pada parent */
-.group:hover .animate-fall-1,
-.group:hover .animate-fall-2,
-.group:hover .animate-fall-3,
-.group:hover .animate-fall-4,
-.group:hover .animate-fall-5,
-.group:hover .animate-fall-6,
-.group:hover .animate-fall-7,
-.group:hover .animate-fall-8,
-.group:hover .animate-fall-9,
-.group:hover .animate-fall-10,
-.group:hover .animate-fall-11,
-.group:hover .animate-fall-12 {
-    animation-play-state: running;
-}
-
-/* Default state: animasi pause */
-.animate-fall-1,
-.animate-fall-2,
-.animate-fall-3,
-.animate-fall-4,
-.animate-fall-5,
-.animate-fall-6,
-.animate-fall-7,
-.animate-fall-8,
-.animate-fall-9,
-.animate-fall-10,
-.animate-fall-11,
-.animate-fall-12 {
-    animation-play-state: paused;
-}
-
-/* ==================== DELAY CLASSES ==================== */
-
-.animation-delay-100 {
-    animation-delay: 100ms;
-}
-
-.animation-delay-200 {
-    animation-delay: 200ms;
-}
-
-.animation-delay-300 {
-    animation-delay: 300ms;
-}
-
-.animation-delay-400 {
-    animation-delay: 400ms;
-}
-
-.animation-delay-500 {
-    animation-delay: 500ms;
-}
+.animation-delay-100 { animation-delay: 100ms; }
+.animation-delay-200 { animation-delay: 200ms; }
+.animation-delay-300 { animation-delay: 300ms; }
 
 /* ==================== CUSTOM UTILITIES ==================== */
 
 /* Shimmer effect untuk loading */
-.shimmer {
-    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-    background-size: 1000px 100%;
-    animation: shimmer 2s infinite;
+@keyframes shimmer {
+    0% { background-position: -1000px 0; }
+    100% { background-position: 1000px 0; }
 }
 
-/* Custom scrollbar */
+.shimmer {
+    background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite linear;
+}
+
+/* Custom scrollbar - Tema Oranye */
 ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--color-garis);
-    border-radius: 10px;
+    background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--color-hijau);
+    background: #fdba74; /* orange-300 */
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #008a5c;
+    background: var(--color-utama); /* orange-500 */
 }
 
-/* Smooth transition untuk semua elemen */
-* {
-    transition: all 0.2s ease;
-}
-
-/* Focus ring yang lebih bagus */
+/* Focus ring bersih */
 input:focus, select:focus, textarea:focus, button:focus {
     outline: none;
-    ring: 2px solid var(--color-hijau);
-    ring-offset: 2px;
 }
 
-/* Glassmorphism effect */
-.glass {
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-/* Gradient text */
+/* Gradient text - Tema Oranye */
 .gradient-text {
-    background: linear-gradient(135deg, var(--color-hijau), var(--color-biru));
+    background: linear-gradient(135deg, var(--color-utama), #fb923c); /* orange-500 to orange-400 */
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-}
-
-/* Card hover effect */
-.card-hover {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card-hover:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-}
-
-/* ==================== RESPONSIVE UTILITIES ==================== */
-
-@media (max-width: 768px) {
-    .animate-slideInLeft, .animate-slideInRight {
-        animation-duration: 0.3s;
-    }
 }
 
 /* ==================== PRINT STYLES ==================== */
@@ -504,7 +114,6 @@ input:focus, select:focus, textarea:focus, button:focus {
     .no-print {
         display: none;
     }
-    
     body {
         background: white;
     }

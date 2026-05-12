@@ -1,32 +1,30 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { BsFillExclamationDiamondFill } from "react-icons/bs";
 import { ImSpinner2 } from "react-icons/im";
 
 export default function Login() {
-    const navigate = useNavigate()
-    const [loading, setLoading] = useState(false)
-    const [error, setError] = useState("")
+    const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
     const [dataForm, setDataForm] = useState({
         email: "",
         password: "",
-    })
+    });
 
     const handleChange = (evt) => {
-        const { name, value } = evt.target
+        const { name, value } = evt.target;
         setDataForm({
             ...dataForm,
             [name]: value,
-        })
-    }
+        });
+    };
 
-    /* process form */
     const handleSubmit = async (e) => {
-        e.preventDefault()
-
-        setLoading(true)
-        setError(false)
+        e.preventDefault();
+        setLoading(true);
+        setError(false);
 
         axios
             .post("https://dummyjson.com/user/login", {
@@ -34,13 +32,10 @@ export default function Login() {
                 password: dataForm.password,
             })
             .then((response) => {
-                // Jika status bukan 200, tampilkan pesan error
                 if (response.status !== 200) {
                     setError(response.data.message);
                     return;
                 }
-
-                // Redirect ke dashboard jika login sukses
                 navigate("/");
             })
             .catch((err) => {
@@ -53,71 +48,77 @@ export default function Login() {
             .finally(() => {
                 setLoading(false);
             });
+    };
 
-    }
-
-    /* error & loading status */
     const errorInfo = error ? (
-        <div className="bg-red-200 mb-5 p-5 text-sm font-light text-gray-600 rounded flex items-center">
-            <BsFillExclamationDiamondFill className="text-red-600 me-2 text-lg" />
+        <div className="bg-red-50 border-l-4 border-red-500 mb-6 p-4 text-sm text-red-700 rounded-r flex items-center shadow-sm">
+            <BsFillExclamationDiamondFill className="mr-2 text-lg" />
             {error}
         </div>
-    ) : null
-
-    const loadingInfo = loading ? (
-        <div className="bg-gray-200 mb-5 p-5 text-sm rounded flex items-center">
-            <ImSpinner2 className="me-2 animate-spin" />
-            Mohon Tunggu...
-        </div>
-    ) : null
+    ) : null;
 
     return (
         <div>
-            <h2 className="text-2xl font-semibold text-gray-700 mb-6 text-center">
-                Welcome Back 👋
-            </h2>
+            <h2 className="text-3xl font-bold text-gray-800 mb-2">Sign in</h2>
+            <p className="text-gray-500 mb-8 text-sm font-medium">Sign in to stay connected.</p>
 
             {errorInfo}
 
-            {loadingInfo}
-
-             <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <div className="mb-5">
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
                         Email Address
                     </label>
                     <input
                         type="text"
                         id="email"
-                        className="w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg shadow-sm
-                            placeholder-gray-400"
-                        placeholder="you@example.com"
                         name="email"
+                        className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-all text-sm placeholder-gray-400"
+                        placeholder="you@example.com"
                         onChange={handleChange}
                     />
                 </div>
+                
                 <div className="mb-6">
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
                         Password
                     </label>
                     <input
                         type="password"
                         id="password"
-                        className="w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg shadow-sm
-                            placeholder-gray-400"
-                        placeholder="********"
                         name="password"
+                        className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-all text-sm placeholder-gray-400"
+                        placeholder="********"
                         onChange={handleChange}
                     />
                 </div>
+
+                <div className="flex items-center justify-between mb-8">
+                    <label className="flex items-center text-sm text-gray-600 cursor-pointer">
+                        <input type="checkbox" className="w-4 h-4 mr-2 rounded border-gray-300 text-orange-500 focus:ring-orange-500" />
+                        Remember me
+                    </label>
+                    <Link to="/forgot" className="text-sm text-orange-500 font-semibold hover:text-orange-600">
+                        Forgot Password?
+                    </Link>
+                </div>
+
                 <button
                     type="submit"
-                    className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4
-                        rounded-lg transition duration-300"
+                    disabled={loading}
+                    className="w-full bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white font-bold py-3 px-4 rounded-xl transition duration-300 shadow-md shadow-orange-500/30 flex justify-center items-center"
                 >
-                    Login
+                    {loading ? (
+                        <><ImSpinner2 className="mr-2 animate-spin" /> Signing in...</>
+                    ) : (
+                        "Sign in"
+                    )}
                 </button>
+
+                <p className="text-center mt-6 text-sm text-gray-600 font-medium">
+                    Don't have an account? <Link to="/register" className="text-orange-500 hover:text-orange-600">Sign up</Link>
+                </p>
             </form>
         </div>
-    )
+    );
 }
