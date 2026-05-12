@@ -170,7 +170,7 @@ export default function ProductDetail() {
                         <div className="grid grid-cols-2 gap-4">
                             {product.weight && (
                                 <div className="bg-gray-100 rounded-lg p-4">
-                                    <p className="text-gray-600 text-sm mb-1">Berat</p>
+                                    <p className="text-gray-600 text-sm mb-1"> Berat</p>
                                     <p className="font-semibold text-gray-900">{product.weight}g</p>
                                 </div>
                             )}
